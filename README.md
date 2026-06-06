@@ -1,5 +1,8 @@
 # LabVIEW External Data Value Reference Minimal C++ Example
 
+> [!CAUTION]
+> None of this is really documented by NI or is guaranteed to not change in the future.
+
 This is a 300 line self contained example of how to use EDVR in C++ with LabVIEW on Windows.
 
 The code imports the `EDVR` functions exported by the LabVIEW IDE/Runtime so it can be compiled without any linkage to ni provided binaries.
