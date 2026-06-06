@@ -183,8 +183,9 @@ LV_MgErr_t on_labview_lock(LV_EDVRDataPtr_t data_ptr)
 {
     // this is where we would block until any C++ operations had completed
     // or return an error if we want to signal that LabVIEW cannot have the data - like because it already has a lock on it!
+    // We could also ensure that the edvr_data_ptr's data_ptr, n_dims or dimension_specifier are up to date here if we don't elsewhere
+    
     DbgPrintf("Granting access to the data to LabVIEW.");
-
     return LV_ERR_noError;
 }
 
@@ -193,7 +194,6 @@ LV_MgErr_t on_labview_unlock(LV_EDVRDataPtr_t data_ptr)
     // this is where we would record that LabVIEW has finished with the data
     // the size cannot be changed but the values might have been modified by LabVIEW
     DbgPrintf("LabVIEW relinquished access to the data.");
-
     return LV_ERR_noError;
 }
 
