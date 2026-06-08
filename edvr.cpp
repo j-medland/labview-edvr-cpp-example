@@ -106,16 +106,15 @@ LV_MgErr_t EDVR_ReleaseRefWithContext(LV_EDVRReference_t edvr_ref_ptr, LV_EDVRCo
 using LV_DbgPrintfFnPtr_t = std::add_pointer_t<LV_MgErr_t(const char *, ...)>;
 static LV_DbgPrintfFnPtr_t DbgPrintfImp = nullptr;
 
-LV_MgErr_t DbgPrintf(const char *fmt, ...)
+template <typename ...Args>
+LV_MgErr_t DbgPrintf(const char *fmt, Args... args)
 {
     if (DbgPrintfImp == nullptr)
     {
         return LV_ERR_bogusError;
     }
-    va_list args;
-    va_start(args, fmt);
-    DbgPrintfImp(fmt, args);
-    va_end(args);
+
+    DbgPrintfImp(fmt, args...);
     return LV_ERR_noError;
 }
 
